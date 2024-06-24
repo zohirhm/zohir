@@ -1,33 +1,60 @@
-# Gradle files
-.gradle/
-build/
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
-# Local configuration file (sdk path, etc)
-local.properties
+const WaterCupApp = () => {
+    return (
+        <View style={styles.container}>
+            <View style={styles.cup} id="cup1">
+                <View style={styles.water} id="water1"></View>
+            </View>
+            <View style={styles.cup} id="cup2">
+                <View style={styles.water} id="water2"></View>
+            </View>
+            <View style={styles.controls}>
+                <TouchableOpacity onPress={() => addPoints(1, 10)} style={styles.button}>
+                    <Text>إضافة 10 نقاط إلى الكأس 1</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => addPoints(2, 20)} style={styles.button}>
+                    <Text>إضافة 20 نقطة إلى الكأس 2</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
 
-# Log/OS Files
-*.log
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    cup: {
+        width: 100,
+        height: 200,
+        borderWidth: 2,
+        borderColor: '#000',
+        borderRadius: 10,
+        position: 'relative',
+        overflow: 'hidden',
+        marginBottom: 20,
+    },
+    water: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        backgroundColor: 'blue',
+    },
+    controls: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button: {
+        marginHorizontal: 10,
+        padding: 10,
+        backgroundColor: 'lightblue',
+        borderRadius: 5,
+    },
+});
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-output.json
-
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
-
-# Keystore files
-*.jks
-*.keystore
-
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
-# Android Profiling
-*.hprof
+export default WaterCupApp;
